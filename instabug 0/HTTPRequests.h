@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface HTTPRequests : NSObject
--(void)postJsonResponse:(NSString *)urlStr jsonBody:(NSString*)jsonBody header:(NSDictionary*)header success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure;
+//-(void)postJsonResponse:(NSString *)urlStr jsonBody:(NSString*)jsonBody header:(NSDictionary*)header success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure;
 
+-(void)postDataWithUrlString:(NSString*)urlString withData:(NSMutableDictionary *)dicData success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure;
 -(void)getJsonResponse:(NSString *)urlStr success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure ;
 //@property (nonatomic,strong) NSMutableOrderedSet *dataTasks ;
 @property (nonatomic) int activeDatataskCount ;

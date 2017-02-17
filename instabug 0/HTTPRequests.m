@@ -14,11 +14,78 @@
 
 -(void)postJsonResponse:(NSString *)urlStr jsonBody:(NSString*)jsonBody header:(NSDictionary*)header success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure
 {
+    NSString *post = [NSString stringWithFormat:@"test=Message&this=isNotReal"];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://YourURL.com/FakeURL"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:postData];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest: request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@"requestReply: %@", requestReply);
+    }] ;
+    [dataTask resume];
+}
+
+-(void)postDataWithUrlString:(NSString*)urlString withData:(NSMutableDictionary *)dicData success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure{
+    
+    NSError *error;
+    
+    
+    
+    NSURL* url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:200.0];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"627562626c6520617069206b6579" forHTTPHeaderField:@"Authorization"];
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPMethod:@"POST"];
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:dicData options:0 error:&error];
+    
+    
+    [request setHTTPBody:postData];
+    
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error==nil) {
+            
+            NSError*error;
+            NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+            success(jsonString);
+            NSLog(@"error%@ array%@",error.localizedDescription,jsonString);
+            
+            
+            
+            
+            
+        }
+        else {
+            NSLog(@"%@",error.localizedDescription);
+            
+            failure(error);
+            
+        }
+        
+    }];
+    
+    [postDataTask resume];
+    
+    
     
     
     
 }
-
 
 -(void)getJsonResponse:(NSString *)urlStr success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure
 {
