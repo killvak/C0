@@ -12,23 +12,7 @@
 
 
 
--(void)postJsonResponse:(NSString *)urlStr jsonBody:(NSString*)jsonBody header:(NSDictionary*)header success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure
-{
-    NSString *post = [NSString stringWithFormat:@"test=Message&this=isNotReal"];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://YourURL.com/FakeURL"]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:postData];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest: request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        NSLog(@"requestReply: %@", requestReply);
-    }] ;
-    [dataTask resume];
-}
+
 
 -(void)postDataWithUrlString:(NSString*)urlString withData:(NSMutableDictionary *)dicData success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure{
     
