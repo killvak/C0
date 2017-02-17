@@ -14,6 +14,7 @@
 		712B26681E576F6E003E1ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712B26671E576F6E003E1ABE /* Assets.xcassets */; };
 		712B266B1E576F6E003E1ABE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B26691E576F6E003E1ABE /* LaunchScreen.storyboard */; };
 		712B26761E576F6E003E1ABE /* instabug_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 712B26751E576F6E003E1ABE /* instabug_0Tests.m */; };
+		712B26821E5771B4003E1ABE /* HTTPRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 712B26811E5771B4003E1ABE /* HTTPRequests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		712B26711E576F6E003E1ABE /* instabug 0Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "instabug 0Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		712B26751E576F6E003E1ABE /* instabug_0Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = instabug_0Tests.m; sourceTree = "<group>"; };
 		712B26771E576F6E003E1ABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		712B26801E5771B4003E1ABE /* HTTPRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequests.h; sourceTree = "<group>"; };
+		712B26811E5771B4003E1ABE /* HTTPRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				712B265F1E576F6E003E1ABE /* AppDelegate.m */,
 				712B26611E576F6E003E1ABE /* ViewController.h */,
 				712B26621E576F6E003E1ABE /* ViewController.m */,
+				712B26801E5771B4003E1ABE /* HTTPRequests.h */,
+				712B26811E5771B4003E1ABE /* HTTPRequests.m */,
 				712B26641E576F6E003E1ABE /* Main.storyboard */,
 				712B26671E576F6E003E1ABE /* Assets.xcassets */,
 				712B26691E576F6E003E1ABE /* LaunchScreen.storyboard */,
@@ -214,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				712B26631E576F6E003E1ABE /* ViewController.m in Sources */,
+				712B26821E5771B4003E1ABE /* HTTPRequests.m in Sources */,
 				712B26601E576F6E003E1ABE /* AppDelegate.m in Sources */,
 				712B265D1E576F6E003E1ABE /* main.m in Sources */,
 			);
